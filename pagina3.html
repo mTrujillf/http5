@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotización de Seguros de Autos</title>
+</head>
+<body>
+<script>
+function calcularCotizacion(modelo) {
+// Puedes ajustar la lógica de cálculo de la cotización según tus necesidades
+if (modelo <= 2000) {
+return 5000; // Ejemplo de cotización para modelos anteriores a 2000
+} else {
+return 10000; // Ejemplo de cotización para modelos posteriores a 2000
+}
+}
+
+function obtenerParametro(nombre) {
+// Función para obtener el valor de un parámetro de la URL
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+return urlParams.get(nombre);
+}
+
+// Obtener los parámetros de la URL
+const nombre = obtenerParametro('nombre');
+const apellido = obtenerParametro('apellido');
+const genero = obtenerParametro('genero');
+const edad = obtenerParametro('edad');
+const estado = obtenerParametro('estado');
+const marca = obtenerParametro('marca');
+const modelo = parseInt(obtenerParametro('modelo'));
+const placas = obtenerParametro('placas');
+
+// Calcular la cotización del seguro
+const cotizacion = calcularCotizacion(modelo);
+
+// Construir el mensaje
+const mensaje = `<h1>Estimad${genero === 'Mujer' ? 'a' : (genero === 'Hombre' ? 'o' : '@')} ${nombre} ${apellido}:</h1>
+<p>En función a los datos proporcionados:</p>
+<ul>
+<li>Género: ${genero}</li>
+<li>Edad: ${edad}</li>
+<li>Estado: ${estado}</li>
+<li>Marca: ${marca}</li>
+<li>Modelo: ${modelo}</li>
+<li>Placas: ${placas}</li>
+</ul>
+<p>La cotización de su seguro es: <span id="cotizacion">${cotizacion}</span> pesos</p>`;
+
+// Mostrar el mensaje en el documento
+document.body.innerHTML = mensaje;
+</script>
+</body>
+</html>

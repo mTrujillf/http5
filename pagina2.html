@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuestionario de Cotización de Seguros de Autos</title>
+
+</head>
+<body>
+
+    <script>
+        function limpiarFormulario() {
+        document.getElementById("formulario_cotizacion").reset();
+        }
+    
+        function obtenerParametro(nombre) {
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        return urlParams.get(nombre);
+        }
+    </script>
+    <h2>Datos personales</h2> 
+    <th><label id="nombreLabel"></label></th>
+    <br>
+    <th><label id="generoLabel"></label></th>
+    <br>
+    <th><label id="edadLabel"></label></th>
+    <br>
+    <th><label id="estadoLabel"></label></th>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var params = new URLSearchParams(window.location.search);
+            var nombre = params.get("nombre");
+            var apellido = params.get("apellido")
+            var genero = params.get("genero")
+            var edad = params.get("edad")
+            var estado = params.get("estado")
+
+            var labelNombre = document.getElementById("nombreLabel");
+            var labelGenero = document.getElementById("generoLabel");
+            var labelEdad = document.getElementById("edadLabel");
+            var labelEstado = document.getElementById("estadoLabel");
+
+            labelNombre.textContent = "Estimado Sr(a) " + nombre + apellido;
+            generoLabel.textContent = "Genero " + genero;
+            labelEdad.textContent = "Edad:" + edad;
+            labelEstado.textContent = "Estado:" + estado;
+        });
+    </script>
+
+
+
+    <h2>Datos del auto</h2>
+
+    <form id="formulario_cotizacion" action="pagina3.html" method="get">
+        <input type="hidden" name="nombre" value="obtenerParametro('nombre')">
+        <input type="hidden" name="apellido" value="obtenerParametro('apellido')">
+        <input type="hidden" name="genero" value="obtenerParametro('genero')">
+        <input type="hidden" name="edad" value="obtenerParametro('edad')">
+        
+        <table>
+            <tr>
+                <th><label for="marca">Marca:</label></th>
+                <td>
+                    <select name="marca" id="marca">
+                        <option value="Acura">Acura</option>
+                        <option value="Alfa Romeo">Alfa Romeo</option>
+                        <option value="Aston Martin">Aston Martin</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Bentley">Bentley</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Buick">Buick</option>
+                        <option value="Cadillac">Cadillac</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Chrysler">Chrysler</option>
+                        <option value="Dodge">Dodge</option>
+                        <option value="Ferrari">Ferrari</option>
+                        <option value="Fiat">Fiat</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Genesis">Genesis</option>
+                        <option value="GMC">GMC</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Infiniti">Infiniti</option>
+                        <option value="Jaguar">Jaguar</option>
+                        <option value="Jeep">Jeep</option>
+                        <option value="Kia">Kia</option>
+                        <option value="Lamborghini">Lamborghini</option>
+                        <option value="Land Rover">Land Rover</option>
+                        <option value="Lexus">Lexus</option>
+                        <option value="Lincoln">Lincoln</option>
+                        <option value="Lotus">Lotus</option>
+                        <option value="Maserati">Maserati</option>
+                        <option value="Mazda">Mazda</option>
+                        <option value="McLaren">McLaren</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz</option>
+                        <option value="MINI">MINI</option>
+                        <option value="Mitsubishi">Mitsubishi</option>
+                        <option value="Nissan">Nissan</option>
+                        <option value="Porsche">Porsche</option>
+                        <option value="Ram">Ram</option>
+                        <option value="Rolls-Royce">Rolls-Royce</option>
+                        <option value="Saab">Saab</option>
+                        <option value="Subaru">Subaru</option>
+                        <option value="Suzuki">Suzuki</option>
+                        <option value="Tesla">Tesla</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Volkswagen">Volkswagen</option>
+                        <option value="Volvo">Volvo</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="anio">Año del auto:</label></th>
+                <td><input type="text" name="anio" id="anio"></td>
+            </tr>
+            <tr>
+                <th><label for="placa">Placa:</label></th>
+                <td><input type="text" name="placa" id="placa"></td>
+            </tr>
+            <tr>
+                <th><input type="button" value="Limpiar" onclick="limpiarFormulario()"></th>
+                <td><input type="submit" value="Enviar"></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>
